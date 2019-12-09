@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="library-api/Models/UserType.cs">
+    <Files>
+      <File FileName="library-api/Models/UserType.cs" Line="7" Column="6" />
+      <File FileName="library-api/Models/MyDbContext.cs" Line="6" Column="43" />
+      <File FileName="library-api/Migrations/20191209204019_UserType.cs" Line="15" Column="32" />
+      <File FileName="library-api/Models/User.cs" Line="17" Column="19" />
+      <File FileName="library-api/Migrations/20191209212258_UpdateUsers2.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="library-api" expanded="True">
+            <Node name="library-api" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="UserType.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.library-api FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
