@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/matheuslopes/Desktop/workspace/library/library-api/library-api/library-api.csproj": {}
+    "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/library-api.csproj": {}
   },
   "projects": {
-    "/Users/matheuslopes/Desktop/workspace/library/library-api/library-api/library-api.csproj": {
+    "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/library-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/matheuslopes/Desktop/workspace/library/library-api/library-api/library-api.csproj",
+        "projectUniqueName": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/library-api.csproj",
         "projectName": "library-api",
-        "projectPath": "/Users/matheuslopes/Desktop/workspace/library/library-api/library-api/library-api.csproj",
+        "projectPath": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/library-api.csproj",
         "packagesPath": "/Users/matheuslopes/.nuget/packages/",
-        "outputPath": "/Users/matheuslopes/Desktop/workspace/library/library-api/library-api/obj/",
+        "outputPath": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/matheuslopes/.nuget/NuGet/NuGet.Config"

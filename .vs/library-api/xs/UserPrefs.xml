@@ -1,11 +1,13 @@
-﻿<Properties StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="library-api/Models/UserType.cs">
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="library-api/Models/UserType.cs" Line="7" Column="6" />
-      <File FileName="library-api/Models/MyDbContext.cs" Line="6" Column="43" />
-      <File FileName="library-api/Migrations/20191209204019_UserType.cs" Line="15" Column="32" />
-      <File FileName="library-api/Models/User.cs" Line="17" Column="19" />
-      <File FileName="library-api/Migrations/20191209212258_UpdateUsers2.cs" Line="1" Column="1" />
+      <File FileName="library-api/Models/User.cs" Line="5" Column="2" />
+      <File FileName="library-api/Controllers/UserController.cs" Line="37" Column="40" />
+      <File FileName="library-api/Properties/launchSettings.json" Line="21" Column="29" />
+      <File FileName="library-api/Program.cs" Line="16" Column="1" />
+      <File FileName="library-api/Program.cs" Line="16" Column="1" />
+      <File FileName="library-api/Models/MyDbContext.cs" Line="13" Column="52" />
+      <File FileName="library-api/Models/UserType.cs" Line="8" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,12 +17,15 @@
               <Node name="Controllers" expanded="True" />
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="UserType.cs" selected="True" />
+                <Node name="User.cs" selected="True" />
               </Node>
               <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -30,5 +35,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.library-api FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.library-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using library_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,44 +8,48 @@ namespace library_api.Controllers
 {
     public class UserController
     {
-        [Route("user")]
-        [HttpPost]
-        public IList List()
+        [Route("users")]
+        [HttpGet]
+        public object List()
         {
             User user = new User();
             return user.List();
         }
 
-        [Route("user/{:userID}")]
-        [HttpPost]
-        public User Get(int userID)
+        [Route("user/{userID}")]
+        [HttpGet]
+        public object Get(int userID)
         {
             User user = new User();
             return user.Get(userID);
         }
 
-        [Route("user/create")]
+        [Route("user")]
         [HttpPost]
-        public User Create([FromBody] User user)
+        public object Create([FromBody] User user)
         {
             user.Create();
             return user;
         }
 
-        [Route("user/{:userID}/create")]
-        [HttpPost]
+        [Route("user/{userID}")]
+        [HttpPut]
         public User Update(int userID, [FromBody] User user)
         {
-            user.Update(userID);
+            user.Id = userID;
+            user.Update();
             return user;
         }
 
-        [Route("user/{:userID}/delete")]
-        [HttpPost]
-        public bool Delete(int userID)
+        [Route("user/{userID}")]
+        [HttpDelete]
+        public object Delete(int userID)
         {
-            User user = new User();
-            return user.Delete(userID);
+            User user = new User
+            {
+                Id = userID
+            };
+            return user.Delete();
         }
     }
 }
