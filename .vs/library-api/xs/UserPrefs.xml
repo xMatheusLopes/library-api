@@ -1,13 +1,9 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="library-api/Models/User.cs" Line="5" Column="2" />
-      <File FileName="library-api/Controllers/UserController.cs" Line="37" Column="40" />
-      <File FileName="library-api/Properties/launchSettings.json" Line="21" Column="29" />
-      <File FileName="library-api/Program.cs" Line="16" Column="1" />
-      <File FileName="library-api/Program.cs" Line="16" Column="1" />
-      <File FileName="library-api/Models/MyDbContext.cs" Line="13" Column="52" />
-      <File FileName="library-api/Models/UserType.cs" Line="8" Column="2" />
+      <File FileName="library-api/Models/User.cs" Line="30" Column="14" />
+      <File FileName="library-api/Controllers/UserController.cs" Line="41" Column="18" />
+      <File FileName="library-api/Controllers/AuthorizationAttribute.cs" Line="20" Column="53" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,24 +11,22 @@
           <Node name="library-api" expanded="True">
             <Node name="library-api" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
+              <Node name="Middlewares" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="User.cs" selected="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Middlewares/Authorization.cs" relfile="library-api/Middlewares/Authorization.cs" line="9" column="37" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.library-api PreferredExecutionTarget="/Applications/Google Chrome.app" />

@@ -14,7 +14,7 @@
         "outputPath": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/matheuslopes/.nuget/NuGet/NuGet.Config"
+          "/Users/matheuslopes/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -36,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using library_api.Models;
+﻿using library_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace library_api.Controllers
 {
     public class UserController
     {
+        [Authorization]
         [Route("users")]
         [HttpGet]
         public object List()
@@ -16,6 +14,7 @@ namespace library_api.Controllers
             return user.List();
         }
 
+        [Authorization]
         [Route("user/{userID}")]
         [HttpGet]
         public object Get(int userID)
@@ -24,6 +23,7 @@ namespace library_api.Controllers
             return user.Get(userID);
         }
 
+        [Authorization]
         [Route("user")]
         [HttpPost]
         public object Create([FromBody] User user)
@@ -32,6 +32,7 @@ namespace library_api.Controllers
             return user;
         }
 
+        [Authorization]
         [Route("user/{userID}")]
         [HttpPut]
         public User Update(int userID, [FromBody] User user)
@@ -41,6 +42,7 @@ namespace library_api.Controllers
             return user;
         }
 
+        [Authorization]
         [Route("user/{userID}")]
         [HttpDelete]
         public object Delete(int userID)

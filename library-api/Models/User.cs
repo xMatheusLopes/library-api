@@ -18,6 +18,8 @@ namespace library_api.Models
         {
             try
             {
+                GenerateAccessKey();
+                BcryptPassword();
                 using MyDbContext db = new MyDbContext();
                 db.Users.Add(this);
                 db.SaveChanges();
@@ -33,6 +35,7 @@ namespace library_api.Models
             try
             {
                 using MyDbContext db = new MyDbContext();
+                BcryptPassword();
                 db.Users.Update(this);
                 db.SaveChanges();
                 return db.Users.Find(Id);
@@ -78,6 +81,23 @@ namespace library_api.Models
             {
                 return e.Message;
             }
+        }
+
+        public void BcryptPassword()
+        {
+            Password = BCrypt.Net.BCrypt.HashPassword(Password);
+        }
+
+        public void GenerateAccessKey()
+        {
+            Guid g = Guid.NewGuid();
+            AccessKey = Convert.ToBase64String(g.ToByteArray());
+        }
+
+        public User CheckAccessKey(string key)
+        {
+            using MyDbContext db = new MyDbContext();
+            return db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
         }
     }
 

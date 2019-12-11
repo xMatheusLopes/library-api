@@ -86,3 +86,4 @@
 /Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/Debug/netcoreapp3.0/library-api.csproj.CopyComplete
 /Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/Debug/netcoreapp3.0/library-api.dll
 /Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/Debug/netcoreapp3.0/library-api.pdb
+/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/bin/Debug/netcoreapp3.0/BCrypt.Net-Next.dll
