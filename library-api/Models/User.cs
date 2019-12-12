@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace library_api.Models
 {
@@ -13,6 +16,12 @@ namespace library_api.Models
         public string CPF { get; set; }
         public string AccessKey { get; set; }
         public string Picture { get; set; }
+        private MyDbContext db;
+
+        public User()
+        {
+            db = new MyDbContext();
+        }
 
         public object Create()
         {
@@ -20,7 +29,6 @@ namespace library_api.Models
             {
                 GenerateAccessKey();
                 BcryptPassword();
-                using MyDbContext db = new MyDbContext();
                 db.Users.Add(this);
                 db.SaveChanges();
                 return db.Users.Find(Id);
@@ -34,7 +42,6 @@ namespace library_api.Models
         {
             try
             {
-                using MyDbContext db = new MyDbContext();
                 BcryptPassword();
                 db.Users.Update(this);
                 db.SaveChanges();
@@ -49,7 +56,6 @@ namespace library_api.Models
         {
             try
             {
-                using MyDbContext db = new MyDbContext();
                 db.Users.Remove(this);
                 db.SaveChanges();
                 return true;
@@ -63,7 +69,6 @@ namespace library_api.Models
         {
             try
             {
-                using MyDbContext db = new MyDbContext();
                 return db.Users.ToList();
             } catch (ArgumentException e)
             {
@@ -75,7 +80,6 @@ namespace library_api.Models
         {
             try
             {
-                using MyDbContext db = new MyDbContext();
                 return db.Users.Find(id);
             } catch (ArgumentException e)
             {
@@ -94,10 +98,37 @@ namespace library_api.Models
             AccessKey = Convert.ToBase64String(g.ToByteArray());
         }
 
-        public User CheckAccessKey(string key)
+        public object CheckAccessKey(string key)
         {
-            using MyDbContext db = new MyDbContext();
-            return db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
+            try
+            {
+                return db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
+            }
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+        }
+
+        public object Filter(IQueryCollection filters)
+        {
+            try
+            {
+                List<string> whereClause = new List<string>();
+
+                foreach (var filter in filters)
+                {
+                    whereClause.Add($"{ filter.Key } = '{ filter.Value }'");
+                }
+                return db.Users.FromSqlRaw(
+                    $"SELECT * FROM Users " +
+                    $"WHERE { String.Join(" AND ", whereClause) }")
+                    .ToList();
+            }
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
         }
     }
 

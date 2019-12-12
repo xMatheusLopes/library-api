@@ -1,9 +1,9 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="library-api/Models/User.cs" Line="30" Column="14" />
-      <File FileName="library-api/Controllers/UserController.cs" Line="41" Column="18" />
-      <File FileName="library-api/Controllers/AuthorizationAttribute.cs" Line="20" Column="53" />
+      <File FileName="library-api/Models/User.cs" Line="10" Column="6" />
+      <File FileName="library-api/Controllers/UserController.cs" Line="62" Column="22" />
+      <File FileName="library-api/Models/MyDbContext.cs" Line="5" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,6 +15,7 @@
               <Node name="Models" expanded="True">
                 <Node name="User.cs" selected="True" />
               </Node>
+              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -25,7 +26,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Middlewares/Authorization.cs" relfile="library-api/Middlewares/Authorization.cs" line="9" column="37" />
+      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Middlewares/Authorization.cs" relfile="library-api/Middlewares/Authorization.cs" line="9" column="37" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

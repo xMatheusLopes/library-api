@@ -1,9 +1,11 @@
-﻿using library_api.Models;
+﻿using System.Collections;
+using library_api.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace library_api.Controllers
 {
-    public class UserController
+    public class UserController : Controller
     {
         [Authorization]
         [Route("users")]
@@ -52,6 +54,16 @@ namespace library_api.Controllers
                 Id = userID
             };
             return user.Delete();
+        }
+
+        [Authorization]
+        [Route("user/filter")]
+        [HttpGet]
+        public object Filter()
+        {
+            var filters = HttpContext.Request.Query;
+            User user = new User();
+            return user.Filter(filters);
         }
     }
 }
