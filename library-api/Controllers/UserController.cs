@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using library_api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -101,7 +100,6 @@ namespace library_api.Controllers
                 var filters = HttpContext.Request.Query;
                 User user = new User();
                 return Ok(user.Filter(filters));
-
             }
             catch (Exception e)
             {

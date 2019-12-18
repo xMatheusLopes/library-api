@@ -1,21 +1,16 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
   <MonoDevelop.Ide.Workbench>
-    <Files>
-      <File FileName="library-api/Models/User.cs" Line="46" Column="19" />
-      <File FileName="library-api/Controllers/UserController.cs" Line="104" Column="1" />
-      <File FileName="library-api/Models/MyDbContext.cs" />
-      <File FileName="library-api/Properties/launchSettings.json" Line="15" Column="30" />
-    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="library-api" expanded="True">
             <Node name="library-api" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="UserController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Middlewares" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="User.cs" selected="True" />
+              </Node>
               <Node name="Properties" expanded="True" />
             </Node>
           </Node>
@@ -23,7 +18,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../library-api/Controllers/LoginController.cs" line="14" offsetX="-1" offsetY="-1" expression="login" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
