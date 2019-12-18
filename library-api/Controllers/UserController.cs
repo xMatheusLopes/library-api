@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using library_api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,60 +11,102 @@ namespace library_api.Controllers
         [Authorization]
         [Route("users")]
         [HttpGet]
-        public object List()
+        public IActionResult List()
         {
-            User user = new User();
-            return user.List();
+            try
+            {
+                User user = new User();
+                return Ok(user.List());
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         [Authorization]
         [Route("user/{userID}")]
         [HttpGet]
-        public object Get(int userID)
+        public IActionResult Get(int userID)
         {
-            User user = new User();
-            return user.Get(userID);
+            try
+            {
+                User user = new User();
+                return Ok(user.Get(userID));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         [Authorization]
         [Route("user")]
         [HttpPost]
-        public object Create([FromBody] User user)
+        public IActionResult Create([FromBody] User user)
         {
-            user.Create();
-            return user;
+            try
+            {
+                user.Create();
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         [Authorization]
         [Route("user/{userID}")]
         [HttpPut]
-        public User Update(int userID, [FromBody] User user)
+        public IActionResult Update(int userID, [FromBody] User user)
         {
-            user.Id = userID;
-            user.Update();
-            return user;
+            try
+            {
+                user.Id = userID;
+                return Ok(user.Update());
+            } catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         [Authorization]
         [Route("user/{userID}")]
         [HttpDelete]
-        public object Delete(int userID)
+        public IActionResult Delete(int userID)
         {
-            User user = new User
+            try
             {
-                Id = userID
-            };
-            return user.Delete();
+                User user = new User
+                {
+                    Id = userID
+                };
+                return Ok(user.Delete());
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [Authorization]
         [Route("user/filter")]
         [HttpGet]
-        public object Filter()
+        public IActionResult Filter()
         {
-            var filters = HttpContext.Request.Query;
-            User user = new User();
-            return user.Filter(filters);
+            try
+            {
+                var filters = HttpContext.Request.Query;
+                User user = new User();
+                return Ok(user.Filter(filters));
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }

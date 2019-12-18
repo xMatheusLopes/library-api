@@ -23,68 +23,37 @@ namespace library_api.Models
             db = new MyDbContext();
         }
 
-        public object Create()
+        public User Create()
         {
-            try
-            {
-                GenerateAccessKey();
-                BcryptPassword();
-                db.Users.Add(this);
-                db.SaveChanges();
-                return db.Users.Find(Id);
-            } catch (ArgumentException e)
-            {
-                return e.Message;
-            }
+            GenerateAccessKey();
+            BcryptPassword();
+            db.Users.Add(this);
+            db.SaveChanges();
+            return db.Users.Find(Id);
         }
 
-        public object Update()
+        public User Update()
         {
-            try
-            {
-                BcryptPassword();
-                db.Users.Update(this);
-                db.SaveChanges();
-                return db.Users.Find(Id);
-            } catch (ArgumentException e)
-            {
-                return e.Message;
-            }
+            BcryptPassword();
+            db.Users.Update(this);
+            db.SaveChanges();
+            return db.Users.Find(Id);
         }
 
-        public object Delete()
+        public int Delete()
         {
-            try
-            {
-                db.Users.Remove(this);
-                db.SaveChanges();
-                return true;
-            } catch(ArgumentException e)
-            {
-                return e.Message;
-            }
+            db.Users.Remove(this);
+            return db.SaveChanges();
         }
 
-        public object List()
+        public List<User> List()
         {
-            try
-            {
-                return db.Users.ToList();
-            } catch (ArgumentException e)
-            {
-                return e.Message;
-            }
+            return db.Users.ToList();
         }
 
-        public object Get(int id)
+        public User Get(int id)
         {
-            try
-            {
-                return db.Users.Find(id);
-            } catch (ArgumentException e)
-            {
-                return e.Message;
-            }
+            return db.Users.Find(id);
         }
 
         public void BcryptPassword()
@@ -98,37 +67,23 @@ namespace library_api.Models
             AccessKey = Convert.ToBase64String(g.ToByteArray());
         }
 
-        public object CheckAccessKey(string key)
+        public User CheckAccessKey(string key)
         {
-            try
-            {
-                return db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
-            }
-            catch (ArgumentException e)
-            {
-                return e.Message;
-            }
+            return db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
         }
 
-        public object Filter(IQueryCollection filters)
+        public List<User> Filter(IQueryCollection filters)
         {
-            try
-            {
-                List<string> whereClause = new List<string>();
+            List<string> whereClause = new List<string>();
 
-                foreach (var filter in filters)
-                {
-                    whereClause.Add($"{ filter.Key } = '{ filter.Value }'");
-                }
-                return db.Users.FromSqlRaw(
-                    $"SELECT * FROM Users " +
-                    $"WHERE { String.Join(" AND ", whereClause) }")
-                    .ToList();
-            }
-            catch (ArgumentException e)
+            foreach (var filter in filters)
             {
-                return e.Message;
+                whereClause.Add($"{ filter.Key } = '{ filter.Value }'");
             }
+            return db.Users.FromSqlRaw(
+                $"SELECT * FROM Users " +
+                $"WHERE { String.Join(" AND ", whereClause) }")
+                .ToList();
         }
     }
 
