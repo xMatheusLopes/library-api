@@ -39,14 +39,15 @@ namespace library_api.Controllers
             }
         }
 
-        [Authorization]
         [Route("user")]
         [HttpPost]
         public IActionResult Create([FromBody] User user)
         {
             try
             {
-                user.Create();
+                User newUser = user.Create();
+                string path = "Templates/Emails/EmailConfirmation.html";
+                user.SendEmailConfirmation(newUser, path);
                 return Ok(user);
             }
             catch (Exception e)

@@ -107,6 +107,24 @@ namespace library_api.Models
                 $"WHERE { String.Join(" AND ", whereClause) }")
                 .ToList();
         }
+
+        public object SendEmailConfirmation(User user, string path)
+        {
+            EmailCofirmation data = new EmailCofirmation();
+            data.Username = user.Name;
+            data.BaseUrl = "https://google.com";
+            data.ConfirmationUrl = "https://google.com";
+
+            Email email = new Email
+            {
+                From = "matheushl1996@gmail.com",
+                To = user.Email
+            };
+            email.SetBody(data, path);
+
+            email.SetMessage();
+            return email.Send();
+        }
     }
 
 }

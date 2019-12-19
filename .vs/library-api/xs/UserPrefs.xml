@@ -1,30 +1,38 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
   <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="library-api/Templates/Emails/EmailConfirmation.html" Line="1" Column="16" />
+      <File FileName="library-api/Models/Email.cs" Line="61" Column="1" />
+      <File FileName="library-api/Controllers/UserController.cs" Line="50" Column="35" />
+      <File FileName="library-api/Models/User.cs" Line="126" Column="28" />
+      <File FileName="library-api/Models/EmailCofirmation.cs" Line="8" Column="50" />
+      <File FileName="library-api/Controllers/LoginController.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="library-api" expanded="True">
             <Node name="library-api" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Middlewares" expanded="True" />
-              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="User.cs" selected="True" />
+                <Node name="Email.cs" selected="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
+              <Node name="Templates" expanded="True">
+                <Node name="Emails" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="../../../library-api/Controllers/LoginController.cs" line="14" offsetX="-1" offsetY="-1" expression="login" liveUpdate="False" />
-  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Middlewares/Authorization.cs" relfile="library-api/Middlewares/Authorization.cs" line="9" column="37" />
+      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/Email.cs" relfile="library-api/Models/Email.cs" line="72" column="1" />
+      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Services/HttpService.cs" relfile="library-api/Services/HttpService.cs" line="14" column="32" />
+      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/User.cs" relfile="library-api/Models/User.cs" line="125" column="32" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

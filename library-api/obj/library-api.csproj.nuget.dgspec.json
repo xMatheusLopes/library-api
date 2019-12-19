@@ -14,7 +14,7 @@
         "outputPath": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/matheuslopes/.nuget/NuGet/NuGet.Config"
+          "/Users/matheuslopes/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -52,7 +52,7 @@
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[3.0.1, )"
+              "version": "[3.1.0, )"
             }
           },
           "imports": [

@@ -258,18 +258,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Pomelo.EntityFrameworkCore.MySql/3.0.1": {
+      "Pomelo.EntityFrameworkCore.MySql/3.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "3.0.1",
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
           "MySqlConnector": "0.61.0",
           "Pomelo.JsonObject": "2.2.1"
         },
         "compile": {
-          "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll": {}
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll": {}
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll": {}
         }
       },
       "Pomelo.JsonObject/2.2.1": {
@@ -793,16 +793,16 @@
         "newtonsoft.json.nuspec"
       ]
     },
-    "Pomelo.EntityFrameworkCore.MySql/3.0.1": {
-      "sha512": "5yNEvaya2JrGsXiXO8E/EWuPTnkvNWJw2cGcWm5uuW+yfWrqaSHF5lYLRrIdsk4W8SujnSC1m+OIsuENTQ6WGQ==",
+    "Pomelo.EntityFrameworkCore.MySql/3.1.0": {
+      "sha512": "cm43LBLO2/RWn4fniC/JFpqLy6deHbFK7oBOryzAkjl67UJotmQYXf4I+cjCFBLEApdxtLboBovZ+ckbGYZzjQ==",
       "type": "package",
-      "path": "pomelo.entityframeworkcore.mysql/3.0.1",
+      "path": "pomelo.entityframeworkcore.mysql/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "icon.png",
-        "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll",
-        "pomelo.entityframeworkcore.mysql.3.0.1.nupkg.sha512",
+        "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll",
+        "pomelo.entityframeworkcore.mysql.3.1.0.nupkg.sha512",
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
@@ -1007,7 +1007,7 @@
       "BCrypt.Net-Next >= 3.2.1",
       "Microsoft.EntityFrameworkCore >= 3.1.0",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.0",
-      "Pomelo.EntityFrameworkCore.MySql >= 3.0.1"
+      "Pomelo.EntityFrameworkCore.MySql >= 3.1.0"
     ]
   },
   "packageFolders": {
@@ -1023,7 +1023,7 @@
       "outputPath": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/matheuslopes/.nuget/NuGet/NuGet.Config"
+        "/Users/matheuslopes/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -1061,7 +1061,7 @@
           },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
-            "version": "[3.0.1, )"
+            "version": "[3.1.0, )"
           }
         },
         "imports": [
