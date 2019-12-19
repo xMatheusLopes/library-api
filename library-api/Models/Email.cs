@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 
 namespace library_api.Models
 {
@@ -22,7 +23,9 @@ namespace library_api.Models
         {
             Client = new SmtpClient("smtp.mailtrap.io", 587)
             {
-                Credentials = new NetworkCredential("efa18c0fef4efa", "ad68d25154fe15"),
+                Credentials = new NetworkCredential(
+                    "efa18c0fef4efa",
+                    "ad68d25154fe15"),
                 EnableSsl = true
             };
         }
@@ -39,8 +42,14 @@ namespace library_api.Models
 
         public void SetBody(object model, string path)
         {
-            
             string body = System.IO.File.ReadAllText(path);
+            Type t = model.GetType();
+            foreach (PropertyInfo prop in t.GetProperties())
+            {
+                var key = prop.Name;
+                var value = prop.GetValue(model, null)?.ToString();
+                body = body.Replace("{"+key+"}", value);
+            }
             Body = body;
         }
 
