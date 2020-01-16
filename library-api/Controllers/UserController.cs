@@ -1,5 +1,6 @@
 ﻿using System;
 using library_api.Models;
+using library_api.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,12 @@ namespace library_api.Controllers
 {
     public class UserController : Controller
     {
+        private static Global _global;
+        public UserController(Global global)
+        {
+            _global = global;
+        }
+
         [Authorization]
         [Route("users")]
         [HttpGet]
@@ -47,7 +54,7 @@ namespace library_api.Controllers
             {
                 User newUser = user.Create();
                 string path = "Templates/Emails/EmailConfirmation.html";
-                user.SendEmailConfirmation(newUser, path);
+                user.SendEmailConfirmation(newUser, path, _global.BaseUrl);
                 return Ok(user);
             }
             catch (Exception e)
@@ -103,6 +110,21 @@ namespace library_api.Controllers
                 return Ok(user.Filter(filters));
             }
             catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [Authorization]
+        [Route("user/email-confirmation/{accessKey}")]
+        [HttpGet]
+        public IActionResult EmailConfirmation(string accessKey)
+        {
+            try
+            {
+                User user = new User();
+                return Ok(user.ConfirmUserEmail(accessKey));
+            } catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }

@@ -16,6 +16,7 @@ namespace library_api.Models
         public string CPF { get; set; }
         public string AccessKey { get; set; }
         public string Picture { get; set; }
+        public int GeneralStatusID { get; set; }
         private MyDbContext db;
 
         public User()
@@ -108,22 +109,37 @@ namespace library_api.Models
                 .ToList();
         }
 
-        public object SendEmailConfirmation(User user, string path)
+        public object SendEmailConfirmation(User user, string path, string baseurl)
         {
-            EmailCofirmation data = new EmailCofirmation();
-            data.Username = user.Name;
-            data.BaseUrl = "https://google.com";
-            data.ConfirmationUrl = "https://google.com";
+            EmailCofirmation data = new EmailCofirmation
+            {
+                Username = user.Name,
+                BaseUrl = baseurl,
+                ConfirmationUrl = $"{baseurl}user/email-confirmation/{user.AccessKey}"
+            };
 
             Email email = new Email
             {
                 From = "matheushl1996@gmail.com",
                 To = user.Email
             };
-            email.SetBody(data, path);
+            email.SetBody(data, path);  
 
             email.SetMessage();
             return email.Send();
+        }
+
+        public bool ConfirmUserEmail(string accessKey)
+        {
+            User user = CheckAccessKey(accessKey);
+            if (user != null)
+            {
+                user.GeneralStatusID = 2;
+                db.Users.Update(user);
+                return db.SaveChanges() != 0;
+            }
+
+            return false;
         }
     }
 

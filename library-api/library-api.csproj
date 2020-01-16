@@ -14,6 +14,7 @@
     <Folder Include="Middlewares\" />
     <Folder Include="Templates\" />
     <Folder Include="Templates\Emails\" />
+    <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />

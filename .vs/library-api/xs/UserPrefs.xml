@@ -6,24 +6,31 @@
           <Node name="library-api" expanded="True">
             <Node name="library-api" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" selected="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="User.cs" selected="True" />
+              </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Templates" expanded="True">
                 <Node name="Emails" expanded="True" />
               </Node>
+              <Node name="Tools" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../library-api/Controllers/UserController.cs" line="61" offsetX="-1" offsetY="-1" expression="e.InnerException" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/Email.cs" relfile="library-api/Models/Email.cs" line="72" column="1" />
       <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Services/HttpService.cs" relfile="library-api/Services/HttpService.cs" line="14" column="32" />
-      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/User.cs" relfile="library-api/Models/User.cs" line="125" column="32" />
+      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/User.cs" relfile="library-api/Models/User.cs" line="128" column="32" />
+      <Breakpoint file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Controllers/UserController.cs" relfile="library-api/Controllers/UserController.cs" line="62" column="34" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
