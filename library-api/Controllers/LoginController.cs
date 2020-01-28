@@ -18,7 +18,7 @@ namespace library_api.Controllers
                     return Ok(user);
                 }
 
-                return NotFound();
+                return Ok();
             } catch (Exception e)
             {
                 return StatusCode(500, e.Message);

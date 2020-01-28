@@ -39,13 +39,24 @@ namespace library_api.Models
 
         public User Update()
         {
-            // Criptografa a senha
-            BcryptPassword();
+            User user = new User();
+            user = user.Get(Id);
 
-            // Atualiza o usuário
-            db.Users.Update(this);
-            db.SaveChanges();
-            return db.Users.Find(Id);
+            if (user != null)
+            {
+                // Criptografa a senha
+                BcryptPassword();
+
+                AccessKey = user.AccessKey;
+
+                // Atualiza o usuário
+                db.Users.Update(this);
+                db.SaveChanges();
+                return db.Users.Find(Id);
+            }
+
+            return user;
+
         }
 
         public int Delete()

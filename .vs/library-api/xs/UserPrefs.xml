@@ -1,5 +1,13 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{282A2155-C162-4388-86FD-9AC466BAAB78}|Default">
   <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="library-api/Models/Login.cs" Line="10" Column="44" />
+      <File FileName="library-api/Controllers/LoginController.cs" />
+      <File FileName="library-api/Controllers/UserController.cs" />
+      <File FileName="library-api/Models/User.cs" Line="45" Column="30" />
+      <File FileName="library-api/Startup.cs" />
+      <File FileName="library-api/Properties/launchSettings.json" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -7,10 +15,10 @@
             <Node name="library-api" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="User.cs" selected="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
               <Node name="Templates" expanded="True">
                 <Node name="Emails" expanded="True" />
               </Node>
@@ -29,8 +37,7 @@
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/Email.cs" relfile="library-api/Models/Email.cs" line="72" column="1" />
       <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Services/HttpService.cs" relfile="library-api/Services/HttpService.cs" line="14" column="32" />
-      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/User.cs" relfile="library-api/Models/User.cs" line="128" column="32" />
-      <Breakpoint file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Controllers/UserController.cs" relfile="library-api/Controllers/UserController.cs" line="62" column="34" />
+      <Breakpoint enabled="false" file="/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/Models/User.cs" relfile="library-api/Models/User.cs" line="139" column="32" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

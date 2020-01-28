@@ -12,7 +12,12 @@ namespace library_api.Models
             // Valida se existe um usuário com o email e senha passadas
             using MyDbContext db = new MyDbContext();
             User user = db.Users.Where(u => u.Email == login.Email).FirstOrDefault();
-            return BCrypt.Net.BCrypt.Verify(login.Password, user.Password) ? user : null;
+            if (user != null)
+            {
+                return BCrypt.Net.BCrypt.Verify(login.Password, user.Password) ? user : null;
+            } 
+
+            return null;
         }
     }
 }

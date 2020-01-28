@@ -37,17 +37,25 @@ namespace library_api
             });
             services.Configure(globalOptions);
             services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<Global>>().Value);
+
+            services.AddCors(options =>
+            options.AddPolicy("MyPolicy",
+                builder => {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                }
+            )
+        );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("MyPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

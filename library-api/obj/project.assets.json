@@ -1023,7 +1023,7 @@
       "outputPath": "/Users/matheuslopes/Desktop/workspace/library/libraryApi/library-api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/matheuslopes/.nuget/NuGet/NuGet.Config"
+        "/Users/matheuslopes/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
