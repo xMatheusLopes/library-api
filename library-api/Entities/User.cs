@@ -10,7 +10,7 @@ namespace library_api.Entities
 {
     public class User : IUser
     {
-        private readonly MyDbContext db;
+        private readonly MyDbContext _db;
 
         public int Id { get; set; }
         public string Name { get; set; }
@@ -27,22 +27,20 @@ namespace library_api.Entities
         public DateTime UpdatedAt { get; set; }
         
         public User(MyDbContext myDbContext) {
-            this.db = myDbContext;
+            _db = myDbContext;
         }
 
-        private User() { }
-
-        public User Create()
+        public User Create(User user)
         {
             // Gera o token de acesso
-            GenerateAccessKey();
+            user.AccessKey = GenerateAccessKey();
             // Gera uma senha criptografada
-            BcryptPassword();
+            user.Password = BcryptPassword(user.Password);
 
             // Add novo usuário
-            db.Users.Add(this);
-            db.SaveChanges();
-            return db.Users.Find(Id);
+            _db.Users.Add(user);
+            _db.SaveChanges();
+            return user;
         }
 
         public User Update()
@@ -52,14 +50,14 @@ namespace library_api.Entities
             if (user != null)
             {
                 // Criptografa a senha
-                BcryptPassword();
+                user.Password = BcryptPassword(user.Password);
 
                 AccessKey = user.AccessKey;
 
                 // Atualiza o usuário
-                db.Users.Update(this);
-                db.SaveChanges();
-                return db.Users.Find(Id);
+                _db.Users.Update(this);
+                _db.SaveChanges();
+                return _db.Users.Find(Id);
             }
 
             return user;
@@ -69,39 +67,39 @@ namespace library_api.Entities
         public int Delete()
         {
             // Deleta um usuário
-            db.Users.Remove(this);
-            return db.SaveChanges();
+            _db.Users.Remove(this);
+            return _db.SaveChanges();
         }
 
         public List<User> List()
         {
             // Lista os usuários
-            return db.Users.ToList();
+            return _db.Users.ToList();
         }
 
         public User Get(int id)
         {
             // Pega um usuário
-            return db.Users.Find(id);
+            return _db.Users.Find(id);
         }
 
-        public void BcryptPassword()
+        public string BcryptPassword(string password)
         {
             // Criptografa senha
-            Password = BCrypt.Net.BCrypt.HashPassword(Password);
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
-        public void GenerateAccessKey()
+        public string GenerateAccessKey()
         {
             // Gera um token de acesso
             Guid g = Guid.NewGuid();
-            AccessKey = Convert.ToBase64String(g.ToByteArray());
+            return Convert.ToBase64String(g.ToByteArray());
         }
 
         public User CheckAccessKey(string key)
         {
             // Valida se a chave de acesso é válida
-            return db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
+            return _db.Users.Where(u => u.AccessKey == key).FirstOrDefault();
         }
 
         public List<User> Filter(IQueryCollection filters)
@@ -121,7 +119,7 @@ namespace library_api.Entities
             }
 
             // Retorna a lista de pessoas filtradas
-            return db.Users.FromSqlRaw(
+            return _db.Users.FromSqlRaw(
                 $"SELECT * FROM Users " +
                 $"WHERE { String.Join(" AND ", whereClause) }")
                 .ToList();
@@ -153,8 +151,8 @@ namespace library_api.Entities
             if (user != null)
             {
                 user.GeneralStatusID = 2;
-                db.Users.Update(user);
-                return db.SaveChanges() != 0;
+                _db.Users.Update(user);
+                return _db.SaveChanges() != 0;
             }
 
             return false;

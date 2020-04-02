@@ -15,7 +15,7 @@ namespace library_api.Controllers
         public UserController(Global global, IUser user)
         {
             _global = global;
-            this._user = user;
+            _user = user;
         }
 
         [ServiceFilter(typeof(AuthorizationAttribute))]
@@ -54,10 +54,10 @@ namespace library_api.Controllers
         {
             try
             {
-                User newUser = user.Create();
+                User newUser = _user.Create(user);
                 string path = "Templates/Emails/EmailConfirmation.html";
-                user.SendEmailConfirmation(newUser, path, _global.BaseUrl);
-                return Ok(user);
+                _user.SendEmailConfirmation(newUser, path, _global.BaseUrl);
+                return Ok(newUser);
             }
             catch (Exception e)
             {

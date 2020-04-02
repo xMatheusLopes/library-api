@@ -62,7 +62,8 @@ namespace library_api.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -90,7 +91,8 @@ namespace library_api.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.HasKey("Id");
 

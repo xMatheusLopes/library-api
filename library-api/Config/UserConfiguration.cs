@@ -45,10 +45,12 @@ namespace library_api.Config {
 
             builder
                 .Property(u => u.CreatedAt)
+                .HasDefaultValueSql("datetime('now')")
                 .ValueGeneratedOnAdd();
 
             builder
                 .Property(u => u.UpdatedAt)
+                .HasDefaultValueSql("datetime('now')")
                 .ValueGeneratedOnAddOrUpdate();
         }
     }

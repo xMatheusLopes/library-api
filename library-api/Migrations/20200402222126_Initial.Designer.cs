@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace library_api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20200402192841_InitialSeed")]
-    partial class InitialSeed
+    [Migration("20200402222126_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,7 +64,8 @@ namespace library_api.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -92,7 +93,8 @@ namespace library_api.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.HasKey("Id");
 
