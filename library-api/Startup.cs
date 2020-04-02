@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using library_api.Entities;
+using library_api.Interfaces;
+using library_api.Services;
 using library_api.Tools;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace library_api
@@ -30,6 +27,16 @@ namespace library_api
         {
             services.AddControllers();
 
+            var connection = Configuration["ConexaoSqlite:SqliteConnectionString"];
+            services.AddDbContext<MyDbContext>(options =>
+                options.UseSqlite(connection)
+            );
+
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
             Action<Global> globalOptions = (opt =>
             {
                 opt.Environment = "development";
@@ -39,12 +46,17 @@ namespace library_api
             services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<Global>>().Value);
 
             services.AddCors(options =>
-            options.AddPolicy("MyPolicy",
-                builder => {
-                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                }
-            )
-        );
+                options.AddPolicy("MyPolicy",
+                    builder => {
+                        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                    }
+                )
+            );
+
+            services.AddScoped<IUser, User>();
+            services.AddScoped<IGeneralStatus, GeneralStatus>();
+            services.AddScoped<IUserType, UserType>();
+            services.AddScoped<ILogin, Login>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

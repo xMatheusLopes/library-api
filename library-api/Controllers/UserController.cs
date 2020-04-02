@@ -1,28 +1,31 @@
-﻿using System;
-using library_api.Models;
+﻿using library_api.Interfaces;
+using library_api.Entities;
 using library_api.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace library_api.Controllers
 {
     public class UserController : Controller
     {
         private static Global _global;
-        public UserController(Global global)
+        private readonly IUser _user;
+
+        public UserController(Global global, IUser user)
         {
             _global = global;
+            this._user = user;
         }
 
-        [Authorization]
+        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("users")]
         [HttpGet]
         public IActionResult List()
         {
             try
             {
-                User user = new User();
-                return Ok(user.List());
+                return Ok(_user.List());
             }
             catch (Exception e)
             {
@@ -30,15 +33,14 @@ namespace library_api.Controllers
             }
         }
 
-        [Authorization]
+        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/{userID}")]
         [HttpGet]
         public IActionResult Get(int userID)
         {
             try
             {
-                User user = new User();
-                return Ok(user.Get(userID));
+                return Ok(_user.Get(userID));
             }
             catch (Exception e)
             {
@@ -59,11 +61,11 @@ namespace library_api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
         }
 
-        [Authorization]
+        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/{userID}")]
         [HttpPut]
         public IActionResult Update(int userID, [FromBody] User user)
@@ -78,17 +80,14 @@ namespace library_api.Controllers
             }
         }
 
-        [Authorization]
+        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/{userID}")]
         [HttpDelete]
         public IActionResult Delete(int userID)
         {
             try
             {
-                User user = new User
-                {
-                    Id = userID
-                };
+                User user = _user.Get(userID);
                 return Ok(user.Delete());
             }
             catch (Exception e)
@@ -98,7 +97,7 @@ namespace library_api.Controllers
 
         }
 
-        [Authorization]
+        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/filter")]
         [HttpGet]
         public IActionResult Filter()
@@ -106,8 +105,7 @@ namespace library_api.Controllers
             try
             {
                 var filters = HttpContext.Request.Query;
-                User user = new User();
-                return Ok(user.Filter(filters));
+                return Ok(_user.Filter(filters));
             }
             catch (Exception e)
             {
@@ -115,15 +113,14 @@ namespace library_api.Controllers
             }
         }
 
-        [Authorization]
+        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/email-confirmation/{accessKey}")]
         [HttpGet]
         public IActionResult EmailConfirmation(string accessKey)
         {
             try
             {
-                User user = new User();
-                return Ok(user.ConfirmUserEmail(accessKey));
+                return Ok(_user.ConfirmUserEmail(accessKey));
             } catch (Exception e)
             {
                 return StatusCode(500, e.Message);
