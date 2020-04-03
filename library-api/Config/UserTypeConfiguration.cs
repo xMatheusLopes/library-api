@@ -6,7 +6,7 @@ namespace library_api.Config {
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<UserType> builder)
         {
-            builder.HasKey(g => g.Id);
+            builder.HasKey(u => u.Id);
             builder
                 .Property(u => u.Name)
                 .IsRequired()

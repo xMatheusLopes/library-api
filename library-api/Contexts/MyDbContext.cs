@@ -9,6 +9,7 @@ public class MyDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<UserType> UserTypes { get; set; }
     public DbSet<GeneralStatus> GeneralStatuses { get; set; }
+    public DbSet<Book> Books { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {
@@ -19,6 +20,7 @@ public class MyDbContext : DbContext
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new UserTypeConfiguration());
         modelBuilder.ApplyConfiguration(new GeneralStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new BookConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 
@@ -29,11 +31,13 @@ public class MyDbContext : DbContext
         {
             try
             {
-                entityEntry.Property("UpdatedAt").CurrentValue = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                // if (entityEntry.State == EntityState.Added)
-                // {
-                //     entityEntry.Property("Created").CurrentValue = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                // }
+                entityEntry.Property("UpdatedAt").CurrentValue = DateTime.Now;
+                if (entityEntry.State == EntityState.Added)
+                {
+                    entityEntry.Property("CreatedAt").CurrentValue = DateTime.Now;
+                } else {
+                    entityEntry.Property("CreatedAt").IsModified = false;
+                }
             }
             catch (Exception e)
             {

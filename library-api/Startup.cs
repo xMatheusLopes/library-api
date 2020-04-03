@@ -80,6 +80,7 @@ namespace library_api
             services.AddScoped<IGeneralStatus, GeneralStatus>();
             services.AddScoped<IUserType, UserType>();
             services.AddScoped<ILogin, Login>();
+            services.AddScoped<IBook, Book>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

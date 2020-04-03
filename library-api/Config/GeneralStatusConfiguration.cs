@@ -8,7 +8,7 @@ namespace library_api.Config {
         {
             builder.HasKey(g => g.Id);
             builder
-                .Property(u => u.Name)
+                .Property(g => g.Name)
                 .IsRequired()
                 .HasMaxLength(255)
                 .HasColumnType("varchar(255)");

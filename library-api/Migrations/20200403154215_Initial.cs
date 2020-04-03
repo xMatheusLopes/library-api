@@ -47,7 +47,7 @@ namespace library_api.Migrations
                     AccessKey = table.Column<string>(type: "varchar(255)", nullable: true),
                     Picture = table.Column<string>(type: "varchar(255)", nullable: true),
                     GeneralStatusID = table.Column<int>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "datetime('now')"),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

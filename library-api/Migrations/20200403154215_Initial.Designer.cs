@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace library_api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20200403134924_Initial")]
+    [Migration("20200403154215_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,9 +63,7 @@ namespace library_api.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("TEXT")
-                        .HasDefaultValueSql("datetime('now')");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()

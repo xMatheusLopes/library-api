@@ -44,10 +44,10 @@ namespace library_api.Config {
             builder
                 .HasOne(u => u.GeneralStatus);
 
-            builder
-                .Property(u => u.CreatedAt)
-                .HasDefaultValueSql("datetime('now')")
-                .ValueGeneratedOnAddOrUpdate();
+            // builder
+            //     .Property(u => u.CreatedAt)
+            //     .HasDefaultValueSql("datetime('now')")
+            //     .ValueGeneratedOnAddOrUpdate();
         }
     }
 }

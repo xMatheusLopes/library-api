@@ -74,7 +74,6 @@ namespace library_api.Controllers
         {
             try
             {
-                var teste = User.Identity.Name;
                 user.Id = userID;
                 return Ok(_user.Update(user));
             } catch (Exception e)

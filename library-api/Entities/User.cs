@@ -43,6 +43,7 @@ namespace library_api.Entities
             // Add novo usuário
             _db.Users.Add(user);
             _db.SaveChanges();
+            _db.Entry(user).Reload();
             return user;
         }
 
@@ -62,6 +63,7 @@ namespace library_api.Entities
             // Atualiza o usuário
             _db.Users.Update(user);
             _db.SaveChanges();
+            _db.Entry(user).Reload();
             return user;
         }
 
