@@ -23,7 +23,7 @@ namespace library_api.Config {
                     new UserType
                     {
                         Id = 2,
-                        Name = "Inative" 
+                        Name = "Inactive" 
                     },
                     new UserType
                     {

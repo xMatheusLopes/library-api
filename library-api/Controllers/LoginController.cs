@@ -2,6 +2,7 @@
 using library_api.Entities;
 using library_api.Interfaces;
 using library_api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace library_api.Controllers
@@ -17,6 +18,7 @@ namespace library_api.Controllers
 
         [Route("login")]
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Login([FromBody] Login credentials)
         {
             try

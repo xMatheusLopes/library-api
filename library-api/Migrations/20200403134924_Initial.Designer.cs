@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace library_api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20200403052105_Initial")]
+    [Migration("20200403134924_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,7 @@ namespace library_api.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "Inative"
+                            Name = "Inactive"
                         },
                         new
                         {

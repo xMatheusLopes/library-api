@@ -75,7 +75,7 @@ namespace library_api.Migrations
             migrationBuilder.InsertData(
                 table: "GeneralStatuses",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 2, "Inative" });
+                values: new object[] { 2, "Inactive" });
 
             migrationBuilder.InsertData(
                 table: "GeneralStatuses",

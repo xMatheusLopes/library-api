@@ -39,7 +39,7 @@ namespace library_api.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "Inative"
+                            Name = "Inactive"
                         },
                         new
                         {

@@ -30,6 +30,10 @@ public class MyDbContext : DbContext
             try
             {
                 entityEntry.Property("UpdatedAt").CurrentValue = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                // if (entityEntry.State == EntityState.Added)
+                // {
+                //     entityEntry.Property("Created").CurrentValue = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                // }
             }
             catch (Exception e)
             {

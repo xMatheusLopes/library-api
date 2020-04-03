@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using library_api.Interfaces;
 using library_api.Models;
+using library_api.Services;
 
 namespace library_api.Entities
 {
@@ -33,9 +34,11 @@ namespace library_api.Entities
         public User Create(User user)
         {
             // Gera o token de acesso
-            user.AccessKey = GenerateAccessKey();
+            var token = TokenService.GenerateToken(user);
+            user.AccessKey = token;
             // Gera uma senha criptografada
             user.Password = BcryptPassword(user.Password);
+            user.GeneralStatusID = 2;
 
             // Add novo usuário
             _db.Users.Add(user);
@@ -53,7 +56,8 @@ namespace library_api.Entities
                 user.Password = oldUser.Password;
             }
 
-            user.AccessKey = oldUser.AccessKey;
+            var token = TokenService.GenerateToken(user);
+            user.AccessKey = token;
 
             // Atualiza o usuário
             _db.Users.Update(user);
@@ -147,7 +151,7 @@ namespace library_api.Entities
             User user = CheckAccessKey(accessKey);
             if (user != null)
             {
-                user.GeneralStatusID = 2;
+                user.GeneralStatusID = 1;
                 _db.Users.Update(user);
                 return _db.SaveChanges() != 0;
             }

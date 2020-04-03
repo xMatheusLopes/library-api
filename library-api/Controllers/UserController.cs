@@ -4,6 +4,7 @@ using library_api.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace library_api.Controllers
 {
@@ -20,6 +21,7 @@ namespace library_api.Controllers
 
         [Route("users")]
         [HttpGet]
+        [Authorize]
         public IActionResult List()
         {
             try
@@ -34,6 +36,7 @@ namespace library_api.Controllers
 
         [Route("user/{userID}")]
         [HttpGet]
+        [Authorize]
         public IActionResult Get(int userID)
         {
             try
@@ -48,6 +51,7 @@ namespace library_api.Controllers
 
         [Route("user")]
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Create([FromBody] User user)
         {
             try
@@ -65,10 +69,12 @@ namespace library_api.Controllers
 
         [Route("user/{userID}")]
         [HttpPut]
+        [Authorize]
         public IActionResult Update(int userID, [FromBody] User user)
         {
             try
             {
+                var teste = User.Identity.Name;
                 user.Id = userID;
                 return Ok(_user.Update(user));
             } catch (Exception e)
@@ -79,6 +85,7 @@ namespace library_api.Controllers
 
         [Route("user/{userID}")]
         [HttpDelete]
+        [Authorize]
         public IActionResult Delete(int userID)
         {
             try
@@ -95,6 +102,7 @@ namespace library_api.Controllers
 
         [Route("user/filter")]
         [HttpGet]
+        [Authorize]
         public IActionResult Filter()
         {
             try
@@ -110,6 +118,7 @@ namespace library_api.Controllers
 
         [Route("user/email-confirmation/{accessKey}")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult EmailConfirmation(string accessKey)
         {
             try
