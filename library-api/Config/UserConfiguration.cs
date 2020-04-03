@@ -1,3 +1,4 @@
+using System;
 using library_api.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,11 +46,6 @@ namespace library_api.Config {
 
             builder
                 .Property(u => u.CreatedAt)
-                .HasDefaultValueSql("datetime('now')")
-                .ValueGeneratedOnAdd();
-
-            builder
-                .Property(u => u.UpdatedAt)
                 .HasDefaultValueSql("datetime('now')")
                 .ValueGeneratedOnAddOrUpdate();
         }

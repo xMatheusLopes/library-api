@@ -1,6 +1,7 @@
-﻿using library_api.Config;
+﻿using System;
+using System.Linq;
+using library_api.Config;
 using library_api.Entities;
-using library_api.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class MyDbContext : DbContext
@@ -19,5 +20,24 @@ public class MyDbContext : DbContext
         modelBuilder.ApplyConfiguration(new UserTypeConfiguration());
         modelBuilder.ApplyConfiguration(new GeneralStatusConfiguration());
         base.OnModelCreating(modelBuilder);
+    }
+
+    public override int SaveChanges()
+    {
+        var entries = ChangeTracker.Entries().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+        foreach (var entityEntry in entries)
+        {
+            try
+            {
+                entityEntry.Property("UpdatedAt").CurrentValue = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            }
+            catch (Exception e)
+            {
+                // Objeto não possui a propriedade
+                continue;
+            }
+        }
+
+        return base.SaveChanges();
     }
 }

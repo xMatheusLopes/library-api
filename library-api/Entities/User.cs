@@ -43,31 +43,28 @@ namespace library_api.Entities
             return user;
         }
 
-        public User Update()
+        public User Update(User user)
         {
-            User user = Get(Id);
-
-            if (user != null)
-            {
+            User oldUser = _db.Users.AsNoTracking().First(u => u.Id == user.Id);
+            if (user.Password != null) {
                 // Criptografa a senha
                 user.Password = BcryptPassword(user.Password);
-
-                AccessKey = user.AccessKey;
-
-                // Atualiza o usuário
-                _db.Users.Update(this);
-                _db.SaveChanges();
-                return _db.Users.Find(Id);
+            } else {
+                user.Password = oldUser.Password;
             }
 
-            return user;
+            user.AccessKey = oldUser.AccessKey;
 
+            // Atualiza o usuário
+            _db.Users.Update(user);
+            _db.SaveChanges();
+            return user;
         }
 
-        public int Delete()
+        public int Delete(User user)
         {
             // Deleta um usuário
-            _db.Users.Remove(this);
+            _db.Users.Remove(user);
             return _db.SaveChanges();
         }
 

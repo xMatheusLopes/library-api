@@ -6,8 +6,8 @@ namespace library_api.Interfaces {
     public interface IUser
     {   
         User Create(User user);
-        User Update();
-        int Delete();
+        User Update(User user);
+        int Delete(User user);
         List<User> List();
         User Get(int id);
         string BcryptPassword(string password);

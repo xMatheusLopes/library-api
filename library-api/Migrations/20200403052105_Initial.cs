@@ -48,7 +48,7 @@ namespace library_api.Migrations
                     Picture = table.Column<string>(type: "varchar(255)", nullable: true),
                     GeneralStatusID = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "datetime('now')"),
-                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "datetime('now')")
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

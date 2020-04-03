@@ -18,7 +18,6 @@ namespace library_api.Controllers
             _user = user;
         }
 
-        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("users")]
         [HttpGet]
         public IActionResult List()
@@ -29,11 +28,10 @@ namespace library_api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
         }
 
-        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/{userID}")]
         [HttpGet]
         public IActionResult Get(int userID)
@@ -44,7 +42,7 @@ namespace library_api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
         }
 
@@ -65,7 +63,6 @@ namespace library_api.Controllers
             }
         }
 
-        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/{userID}")]
         [HttpPut]
         public IActionResult Update(int userID, [FromBody] User user)
@@ -73,14 +70,13 @@ namespace library_api.Controllers
             try
             {
                 user.Id = userID;
-                return Ok(user.Update());
+                return Ok(_user.Update(user));
             } catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
         }
 
-        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/{userID}")]
         [HttpDelete]
         public IActionResult Delete(int userID)
@@ -88,16 +84,15 @@ namespace library_api.Controllers
             try
             {
                 User user = _user.Get(userID);
-                return Ok(user.Delete());
+                return Ok(user.Delete(user));
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
 
         }
 
-        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/filter")]
         [HttpGet]
         public IActionResult Filter()
@@ -109,11 +104,10 @@ namespace library_api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
         }
 
-        [ServiceFilter(typeof(AuthorizationAttribute))]
         [Route("user/email-confirmation/{accessKey}")]
         [HttpGet]
         public IActionResult EmailConfirmation(string accessKey)
@@ -123,7 +117,7 @@ namespace library_api.Controllers
                 return Ok(_user.ConfirmUserEmail(accessKey));
             } catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, e);
             }
         }
     }
