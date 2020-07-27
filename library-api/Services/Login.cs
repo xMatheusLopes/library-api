@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using library_api.Entities;
 using library_api.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace library_api.Services
 {
@@ -24,6 +26,22 @@ namespace library_api.Services
             {
                 return BCrypt.Net.BCrypt.Verify(login.Password, user.Password) ? user : null;
             } 
+
+            return null;
+        }
+
+        public User RenewSession(string accessKey) {
+            User user = db.Users.Where(u => u.AccessKey == accessKey).FirstOrDefault();
+
+            if (user != null) {
+                var token = TokenService.GenerateToken(user);
+                user.AccessKey = token;
+                db.Users.Update(user);
+                db.SaveChanges();
+                db.Entry(user).Reload();
+
+                return user;
+            }
 
             return null;
         }

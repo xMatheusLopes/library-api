@@ -35,5 +35,20 @@ namespace library_api.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+        [Route("renew-session/{accessKey}")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult RenewSession(string accessKey) {
+            try {
+                User user = login.RenewSession(accessKey);
+                if (user != null) 
+                    return Ok(user);
+                    
+                return NotFound("Invalid access key");
+            } catch (Exception e) {
+                return StatusCode(500, e.Message);
+            }
+        }
     }
 }
