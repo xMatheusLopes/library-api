@@ -14,18 +14,18 @@ namespace library_api.Services
             return list;
         }
 
-        public async Task<string> Upload(IFormFile file, string type) {
+        public async Task<string> Upload(IFormFile file, string type, string baseUrl) {
             ArrayList types = GetUploadTypes();
             
             if (types.Contains(type) && file != null && file.Length > 0)
             {
                 var fileName = Guid.NewGuid();
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"storage/" + type, fileName.ToString() + Path.GetExtension(file.FileName));
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/storage/" + type, fileName.ToString() + Path.GetExtension(file.FileName));
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
                 }
-                return filePath;
+                return baseUrl + "storage/" + type + "/" + fileName.ToString() + Path.GetExtension(file.FileName);
             }
             return null;
         }

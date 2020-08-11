@@ -13,7 +13,7 @@ namespace library_api.Tools
                 BaseUrl = "";
             } else
             {
-                BaseUrl = "https://localhost:5001/";
+                BaseUrl = "http://localhost:5000/";
             }
         }
     }
