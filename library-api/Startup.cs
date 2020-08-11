@@ -4,7 +4,6 @@ using library_api.Configs;
 using library_api.Entities;
 using library_api.Interfaces;
 using library_api.Services;
-using library_api.Tools;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -60,14 +59,6 @@ namespace library_api
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
 
-            Action<Global> globalOptions = (opt =>
-            {
-                opt.Environment = "development";
-                opt.SetBaseUrl();
-            });
-            services.Configure(globalOptions);
-            services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<Global>>().Value);
-
             services.AddCors(options =>
                 options.AddPolicy("MyPolicy",
                     builder => {
@@ -76,10 +67,11 @@ namespace library_api
                 )
             );
 
-            services.AddScoped<IUser, User>();
             services.AddScoped<IGeneralStatus, GeneralStatus>();
             services.AddScoped<IUserType, UserType>();
-            services.AddScoped<ILogin, Login>();
+            services.AddScoped<ILogin, LoginService>();
+            services.AddScoped<IUser, User>();
+            services.AddScoped<IUpload, UploadService>();
             services.AddScoped<IBook, Book>();
         }
 

@@ -1,4 +1,5 @@
 using library_api.Entities;
+using library_api.Models;
 using library_api.Services;
 
 namespace library_api.Interfaces {

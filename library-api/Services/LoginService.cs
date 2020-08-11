@@ -2,21 +2,19 @@
 using System.Linq;
 using library_api.Entities;
 using library_api.Interfaces;
+using library_api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace library_api.Services
 {
-    public class Login : ILogin
+    public class LoginService : ILogin
     {
         private readonly MyDbContext db;
 
-        public Login(MyDbContext db)
+        public LoginService(MyDbContext db)
         {
             this.db = db;
         }
-
-        public string Email { get; set; }
-        public string Password { get; set; }
 
         public User CheckLogin(Login login)
         {

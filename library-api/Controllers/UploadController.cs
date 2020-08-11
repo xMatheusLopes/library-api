@@ -1,33 +1,27 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
-using library_api.Services;
-using library_api.Tools;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using library_api.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace library_api.Controllers
 {
     public class UploadController : Controller
-    {
-        private static Global _global;
+    {        
+        private readonly IUpload _uploadService;
 
-        public UploadController(Global global)
+        public UploadController(IUpload uploadService)
         {
-            _global = global;
+            _uploadService = uploadService;
         }
 
         [Route("upload/{type}")]
         [HttpGet]
-        // [Authorize]
+        [Authorize]
         public async Task<IActionResult> UploadImageAsync(IFormFile file, String type)
         {
-            UploadService us = new UploadService();
-            var filePath = await us.Upload(file, type, _global.BaseUrl);
+            var filePath = await _uploadService.Upload(file, type);
             if (filePath != null) 
                 return Ok(filePath);
 

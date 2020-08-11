@@ -2,11 +2,18 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Threading.Tasks;
+using library_api.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace library_api.Services
 {
-    public class UploadService {
+    public class UploadService : IUpload {
+        private readonly IConfiguration _config;
+
+        public UploadService(IConfiguration config) {
+            _config = config;
+        }
         public ArrayList GetUploadTypes() {
             ArrayList list = new ArrayList();
             list.Add("img");
@@ -14,7 +21,7 @@ namespace library_api.Services
             return list;
         }
 
-        public async Task<string> Upload(IFormFile file, string type, string baseUrl) {
+        public async Task<string> Upload(IFormFile file, string type) {
             ArrayList types = GetUploadTypes();
             
             if (types.Contains(type) && file != null && file.Length > 0)
@@ -25,7 +32,7 @@ namespace library_api.Services
                 {
                     await file.CopyToAsync(fileStream);
                 }
-                return baseUrl + "storage/" + type + "/" + fileName.ToString() + Path.GetExtension(file.FileName);
+                return _config.GetValue<String>("baseURL") + "storage/" + type + "/" + fileName.ToString() + Path.GetExtension(file.FileName);
             }
             return null;
         }

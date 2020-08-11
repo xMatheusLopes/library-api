@@ -1,22 +1,22 @@
 ﻿using library_api.Interfaces;
 using library_api.Entities;
-using library_api.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 
 namespace library_api.Controllers
 {
     public class UserController : Controller
     {
-        private static Global _global;
         private readonly IUser _user;
+        private readonly IConfiguration _config;
 
-        public UserController(Global global, IUser user)
+        public UserController(IUser user, IConfiguration config)
         {
-            _global = global;
             _user = user;
+            _config = config;
         }
 
         [Route("users")]
@@ -58,7 +58,7 @@ namespace library_api.Controllers
             {
                 User newUser = _user.Create(user);
                 string path = "Templates/Emails/EmailConfirmation.html";
-                _user.SendEmailConfirmation(newUser, path, _global.BaseUrl);
+                _user.SendEmailConfirmation(newUser, path, _config.GetValue<string>("baseUrl"));
                 return Ok(newUser);
             }
             catch (Exception e)
