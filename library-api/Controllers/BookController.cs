@@ -7,7 +7,7 @@ using library_api.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Namespace
+namespace library_api.Controllers
 {
     public class BookController : Controller
     {
