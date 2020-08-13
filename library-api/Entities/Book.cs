@@ -12,6 +12,7 @@ namespace library_api.Entities
         public string Picture { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public float Price { get; set; }
         public Book(MyDbContext myDbContext) : base(myDbContext)
         {
         }

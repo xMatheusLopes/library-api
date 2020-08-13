@@ -22,6 +22,7 @@ namespace library_api.Services
             User user = db.Users.Where(u => u.Email == login.Email).FirstOrDefault();
             if (user != null)
             {
+                user = RenewSession(user.AccessKey);
                 return BCrypt.Net.BCrypt.Verify(login.Password, user.Password) ? user : null;
             } 
 

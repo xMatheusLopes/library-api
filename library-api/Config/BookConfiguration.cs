@@ -22,6 +22,10 @@ namespace library_api.Config {
             builder
                 .Property(b => b.Picture)
                 .HasColumnType("varchar(255)");
+            
+            builder
+                .Property(b => b.Price)
+                .HasColumnType("DECIMAL(10, 2)");
         }
     }
 }
